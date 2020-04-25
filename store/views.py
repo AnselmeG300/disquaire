@@ -3,7 +3,7 @@ from .models import Album, Artist, Contact, Booking
 
 def index(request):
     # request albums
-    albums = Album.objects.filter(available=True).order_by('created_at')[:12]
+    albums = Album.objects.filter(available=True).order_by('-created_at')[:12]
     # then format the request.
     # note that we don't use album['name'] anymore but album.name
     # because it's now an attribute.
@@ -12,8 +12,9 @@ def index(request):
     return HttpResponse(message)
 
 def listing(request):
-    albums = ["<li>{}</li>".format(album['name']) for album in ALBUMS]
-    message = """<ul>{}</ul>""".format("\n".join(albums))
+    albums = Album.objects.filter(available=True)
+    formatted_albums = ["<li>{}</li>".format(album.title) for album in albums]
+    message = """<ul>{}</ul>""".format("\n".join(formatted_albums))
     return HttpResponse(message)
 
 def detail(request, album_id):
