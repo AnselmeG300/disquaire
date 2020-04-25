@@ -1,4 +1,4 @@
-#from django.db import models
+from django.db import models
 
 # Create your models here.
 
@@ -15,3 +15,6 @@ ALBUMS = [
   {'name': 'La Dalle', 'artists': [ARTISTS['lej']]},
   {'name': 'Luna Nueva', 'artists': [ARTISTS['rosana'], ARTISTS['maria-dolores-pradera']]}
 ]
+
+class Artist(models.Model):
+    name = models.CharField(max_length=200, unique=True)

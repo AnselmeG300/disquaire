@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from .models import ALBUMS
+# from .models import ALBUMS # commentez cette ligne
 
 
 def index(request):
