@@ -28,7 +28,8 @@ def listing(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         albums = paginator.page(paginator.num_pages)
     context = {
-        'albums': albums
+        'albums': albums,
+        'paginate': True
     }
     return render(request, 'store/listing.html', context)
 
