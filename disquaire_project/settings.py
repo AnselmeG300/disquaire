@@ -84,6 +84,7 @@ DATABASES = {
         'PASSWORD': '0712 95carole',
         'HOST': 'localhost',
         'PORT': '5432',
+        'ATOMIC_REQUESTS': True,
     }
 }
 
