@@ -8,7 +8,11 @@ class BookingInline(admin.TabularInline):
     verbose_name_plural = "Réservations"
     model = Booking
     fieldsets = [(None, {'fields': ['album', 'contacted']})] # list columns
+    readonly_fields = ["created_at", "contacted", "album"]
     extra = 1
+
+    def has_add_permission(self, request):
+        return False
 
 class AlbumArtistInline(admin.TabularInline):
     verbose_name = "Disque"
@@ -28,6 +32,10 @@ class ArtistAdmin(admin.ModelAdmin):
 class AlbumAdmin(admin.ModelAdmin):
     search_fields = ['reference', 'title']
 
+    def has_add_permission(self, request):
+        return False
+
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):
     list_filter = ['created_at', 'contacted']
+    readonly_fields = ["created_at", "contact", 'album', 'contacted']
