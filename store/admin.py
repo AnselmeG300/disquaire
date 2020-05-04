@@ -5,18 +5,18 @@ from .models import Booking, Contact, Album, Artist
 
 admin.site.register(Booking)
 
-
-
-
-
+class BookingInline(admin.TabularInline):
+    verbose_name = "Réservation"
+    verbose_name_plural = "Réservations"
+    model = Booking
+    fieldsets = [(None, {'fields': ['album', 'contacted']})] # list columns
+    extra = 1
+    
 class AlbumArtistInline(admin.TabularInline):
+    verbose_name = "Disque"
+    verbose_name_plural = "Disques"
     model = Album.artists.through # the query goes through an intermediate table.
     extra = 1
-class BookingInline(admin.TabularInline):
-    model = Booking
-    fieldsets = [
-        (None, {'fields': ['album', 'contacted']})
-        ] # list columns
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
