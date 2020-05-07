@@ -20,7 +20,7 @@ from django.contrib import admin
 from store import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^$', views.index, name="index"),
     url(r'^store/', include('store.urls')),
     url(r'^content/', admin.site.urls)
 ]
