@@ -26,11 +26,11 @@ SECRET_KEY = '943gxfhvd7)j7p7#p=n0z056)kyzz*s!uf-v09)*pku%g52k$h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['disquaire_tbag.kerokuapp.com']
+ALLOWED_HOSTS = ['disquairesss.herokuapp.com']
 
 
 # Application definition
