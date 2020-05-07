@@ -18,4 +18,9 @@ class DetailPageTestCase(TestCase):
         response = self.client.get(reverse('store:detail', args=(album_id,)))
         self.assertEqual(response.status_code, 200)
 
-    # test that detail page returns a 404 if the item does not exist.
+    # test that detail page returns a 404 if the item does not exist
+    def test_detail_page_returns_404(self):
+        impossible = Album.objects.create(title="Transmission Impossible")
+        album_id = Album.objects.get(title='Transmission Impossible').id + 1
+        response = self.client.get(reverse('store:detail', args=(album_id,)))
+        self.assertEqual(response.status_code, 404)
